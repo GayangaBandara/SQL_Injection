@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Users</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Search Users</h1>
+        <form method="POST" action="{{ url_for('search') }}">
+            <input type="text" name="search_term" placeholder="Enter username to search">
+            <button type="submit">Search</button>
+        </form>
+
+        {% if results %}
+        <ul>
+            {% for result in results %}
+            <li>{{ result[0] }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <a href="{{ url_for('home') }}" class="button-link">Back to Home</a>
+    </div>
+</body>
+</html>
